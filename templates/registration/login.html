@@ -1,19 +1,35 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block head %}
   <!-- <link rel="stylesheet" href="{% static 'css/signin.css' %}"> -->
+  <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
 <div>
-<h2>Login</h2>
-<form method="post">
+
+<form method="post" class="form-signin">
+	<h1 class="h3 mb-3 font-weight-normal">Login</h1>
   {% csrf_token %}
-  {{ form }}
-  <button type="submit">Login</button>
+  <div class="form-control">{# <div class="form-group align-items-center"> #}
+  <!--{{ form|crispy }}  {{ form }}-->
+    <div>
+    	{{ form.username|as_crispy_field }}
+    </div>
+    <div>
+        {{ form.password|as_crispy_field }}
+    </div>
+    <div>
+    	<button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+    </div>
+</div>
 </form>
+</div>
 </div>
 {% endblock %}

@@ -43,6 +43,9 @@ INSTALLED_APPS = [
 
     # Own
     'main',
+
+    # Third
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -80,16 +83,21 @@ WSGI_APPLICATION = 'appescola.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = { #aldtec1_db_app_escola
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
+
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'aldtec1_db_app_escola',
-        'USER': 'aldtec1_db_admin',
-        'PASSWORD': 'tshF6Dh4aEgj',
-        'HOST': 'johnny.heliohost.org',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'aldtec1_db_app_escola',
+         'USER': 'aldtec1_db_admin',
+         'PASSWORD': 'tshF6Dh4aEgj',
+         'HOST': 'johnny.heliohost.org',
+         'PORT': '3306',
+         'OPTIONS': {
+             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+         },
     }
 }
 
@@ -141,6 +149,9 @@ STATICFILES_DIRS = [
 home = 'home'
 LOGIN_REDIRECT_URL = home
 LOGOUT_REDIRECT_URL = home
+
+# TO use with Crispyforms 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # For deploy ion Heroku
 django_heroku.settings(locals())
