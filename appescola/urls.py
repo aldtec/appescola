@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.views.generic.base import TemplateView
+from main import views
 
 # Usados para tentar static files
 from django.conf import settings
@@ -24,6 +25,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('a/', views.get_name, name='get_name'),
+    path('b/', views.come, name='come'),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) #static files

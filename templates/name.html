@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+	<link rel="stylesheet" href="{% static 'css/padrao.css' %}">
+{% endblock %}
+{% block title %}Formulário{% endblock %}
+
+{% block content %}
+<form action="/your-name/" method="post">
+	{% csrf_token %}
+	<!--{{ form }}
+	<div class="form-group col-md-6 mb-0">
+    	{{ form.your_name|as_crispy_field }}
+    </div>-->
+	<div class="form-group col-md-4 mb-0">
+    	{{ form.periodo|as_crispy_field }}
+    </div>
+
+	<!--<input type="submit" value="Submit">-->
+	<button type="submit" class="btn btn-primary">GERAR EXCEL</button>
+</form>
+<p><a href="{% url 'logout' %}">logout</a></p>
+<!-- <img src="{% static "image/logo.jpg" %}" alt="My image"> -->
+{% endblock %}
