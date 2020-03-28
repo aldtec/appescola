@@ -37,3 +37,12 @@ class NameForm(forms.Form):
 	def __init__(self, *args, **kwargs):
 		super(NameForm, self).__init__(*args, **kwargs)
 		self.initial['periodo'] = LISTAGEM[2]
+
+
+class PeriodoForm(forms.Form):
+	your_name = forms.CharField(label='Your name', max_length=100)
+	periodo = forms.ChoiceField(choices=LISTAGEM)
+
+	def __init__(self, *args, **kwargs):
+		super(NameForm, self).__init__(*args, **kwargs)
+		self.initial['periodo'] = LISTAGEM[2]

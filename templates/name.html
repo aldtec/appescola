@@ -1,7 +1,7 @@
 
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+{# {% load crispy_forms_tags %} #}
 
 {% block head %}
 	<link rel="stylesheet" href="{% static 'css/padrao.css' %}">
@@ -9,19 +9,40 @@
 {% block title %}Formulário{% endblock %}
 
 {% block content %}
-<form action="/your-name/" method="post">
-	{% csrf_token %}
-	<!--{{ form }}
-	<div class="form-group col-md-6 mb-0">
-    	{{ form.your_name|as_crispy_field }}
-    </div>-->
-	<div class="form-group col-md-4 mb-0">
-    	{{ form.periodo|as_crispy_field }}
-    </div>
+<!--<form action="{% url 'excel' %}" method="post" class="bootstrap4">-->
+<div>
+<h1>RESULTADO</h1>
 
-	<!--<input type="submit" value="Submit">-->
-	<button type="submit" class="btn btn-primary">GERAR EXCEL</button>
+<h2 id='parag'>Resutado?</h2>
+<form action="excel/" method="post">
+	{% csrf_token %}
+<select id='resultado'>
+	<option value={{ vum }}>{{ tum }}</option>
+ 	<option selected value={{ vdois }}>{{ tdois }}</option>
+	<option value={{ vtres }}>{{ ttres }}</option>
+	<option value={{ vquatro }}>{{ tquatro }}</option>
+</select>
+<p>
+<div>
+	<button type="submit" class="btn-primary">GERAR EXCEL</button>
+</div>
 </form>
 <p><a href="{% url 'logout' %}">logout</a></p>
 <!-- <img src="{% static "image/logo.jpg" %}" alt="My image"> -->
+{% endblock %}
+
+{% block javascript %}
+<script>
+	document.getElementById('buttonID').onclick=function(){
+	h2.innerHTML = "Hide Images"
+
+    //Do whatever processing you need  <button type="submit" class="btn-primary" onclick="funcao()">GERAR EXCEL</button>
+    //document.getElementById('formID').submit();
+};
+</script>
+<script>
+function funcao() {
+    document.getElementById("parag").innerHTML = $("#resultado option:selected").val();
+}
+</script>
 {% endblock %}

@@ -27,6 +27,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('a/', views.get_name, name='get_name'),
     path('b/', views.come, name='come'),
+    path('a/excel/', views.excel, name='excel'),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) #static files
