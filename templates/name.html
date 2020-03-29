@@ -14,9 +14,9 @@
 <h1>RESULTADO</h1>
 
 <h2 id='parag'>Resutado?</h2>
-<form action="excel/" method="post">
-	{% csrf_token %}
-<select id='resultado'>
+<form method="post">
+{% csrf_token %}
+<select name='resultado'>
 	<option value={{ vum }}>{{ tum }}</option>
  	<option selected value={{ vdois }}>{{ tdois }}</option>
 	<option value={{ vtres }}>{{ ttres }}</option>
@@ -29,6 +29,9 @@
 </form>
 <p><a href="{% url 'logout' %}">logout</a></p>
 <!-- <img src="{% static "image/logo.jpg" %}" alt="My image"> -->
+
+<a href="{% static 'ponto.xlsx' %}" class="btn btn-secondary px-4 py-2 btn-sm">Download CV</a>
+
 {% endblock %}
 
 {% block javascript %}

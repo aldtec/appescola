@@ -46,6 +46,8 @@ INSTALLED_APPS = [
 
     # Third
     'crispy_forms',
+    'openpyxl',
+    'annoying'
 ]
 
 MIDDLEWARE = [
