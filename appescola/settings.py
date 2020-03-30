@@ -14,6 +14,8 @@ import os
 
 # For deploy ion Heroku
 import django_heroku
+import dj_database_url # Erros no acesso tentativa de correção
+DATABASES['default'] = dj_database_url.config(default='mysql://aldtec1_db_admin:tshF6Dh4aEgj@johnny.heliohost.org:3306/aldtec1_db_escola', conn_max_age=600)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -84,24 +86,24 @@ WSGI_APPLICATION = 'appescola.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = { #aldtec1_db_app_escola
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # },
+# DATABASES = { #aldtec1_db_app_escola
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.sqlite3',
+#     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     # },
 
-    'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'aldtec1_db_app_escola',
-         'USER': 'aldtec1_db_admin',
-         'PASSWORD': 'tshF6Dh4aEgj',
-         'HOST': 'johnny.heliohost.org',
-         'PORT': '3306',
-         'OPTIONS': {
-             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-         },
-    }
-}
+#     'default': {
+#          'ENGINE': 'django.db.backends.mysql',
+#          'NAME': 'aldtec1_db_app_escola',
+#          'USER': 'aldtec1_db_admin',
+#          'PASSWORD': 'tshF6Dh4aEgj',
+#          'HOST': 'johnny.heliohost.org',
+#          'PORT': '3306',
+#          'OPTIONS': {
+#              'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#          },
+#     }
+# }
 
 
 # Password validation
