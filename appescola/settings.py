@@ -15,7 +15,7 @@ import os
 # For deploy ion Heroku
 import django_heroku
 import dj_database_url # Erros no acesso tentativa de correção
-DATABASES['default'] = dj_database_url.config(default='mysql://aldtec1_db_admin:tshF6Dh4aEgj@johnny.heliohost.org:3306/aldtec1_db_escola', conn_max_age=600)
+DATABASES['default'] = dj_database_url.config(default='mysql://aldtec1_db_admin:tshF6Dh4aEgj@johnny.heliohost.org:3306/aldtec1_db_escola', conn_max_age=6)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
