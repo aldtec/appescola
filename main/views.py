@@ -21,6 +21,9 @@ pendulum.set_locale('pt-br')
 from django.conf.urls.static import static
 from annoying.functions import get_object_or_None
 
+# Para garantir acesso a imagens em produção/heroku
+from django.contrib.staticfiles import finders
+
 def come(request):
 
 	def dsc(dia, mes, ano):
@@ -174,7 +177,9 @@ def come(request):
 	for cdprof in dicionario:
 		tgnome = cdprof[1].replace('/', '-')
 		target = wb.copy_worksheet(ps)
-		logo = Image("static/image/logo_pequeno.png")
+		result = finders.find('image/logo_pequeno.png')
+		#logo = Image("static/image/logo_pequeno.png")
+		logo = Image(result)
 		logo.height = 70
 		logo.width = 70
 		target.add_image(logo, "B1")
@@ -270,22 +275,3 @@ def comee(request):
 		x += 1
 	return HttpResponse(mes_passado)
 
-
-# def login_view(request):
-#     if(request.POST):
-#         login_data = request.POST.dict()
-#         username = login_data.get("username")
-#         password = login_data.get("password")
-#         user_type = login_data.get("user_type")
-#         print(user_type, username, password)
-#         return HttpResponse("This is a post request")
-#     else:
-#         return render(request, "base.html")
-
-
-# def detail(request, question_id):
-# try:
-# question = Question.objects.get(pk=question_id)
-# except Question.DoesNotExist:
-# raise Http404("Question does not exist")
-# return render(request, 'polls/detail.html', {'question': question})
