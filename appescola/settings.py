@@ -15,7 +15,6 @@ import os
 # For deploy ion Heroku
 import django_heroku
 import dj_database_url # Erros no acesso tentativa de correção
-DATABASES['default'] = dj_database_url.config(default='mysql://aldtec1_db_admin:tshF6Dh4aEgj@johnny.heliohost.org:3306/aldtec1_db_escola', conn_max_age=6)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -86,6 +85,8 @@ WSGI_APPLICATION = 'appescola.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+DATABASES = {'default': dj_database_url.config()} # Add this
+DATABASES['default'] = dj_database_url.config(default='mysql://aldtec1_db_admin:tshF6Dh4aEgj@johnny.heliohost.org:3306/aldtec1_db_escola', conn_max_age=6)
 # DATABASES = { #aldtec1_db_app_escola
 #     # 'default': {
 #     #     'ENGINE': 'django.db.backends.sqlite3',
