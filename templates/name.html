@@ -9,11 +9,9 @@
 {% block title %}Formulário{% endblock %}
 
 {% block content %}
-<!--<form action="{% url 'excel' %}" method="post" class="bootstrap4">-->
+
 <div>
 <h1>RESULTADO</h1>
-
-<h2 id='parag'>Resutado?</h2>
 <form method="post">
 {% csrf_token %}
 <select name='resultado'>
@@ -30,7 +28,7 @@
 <p><a href="{% url 'logout' %}">logout</a></p>
 <!-- <img src="{% static "image/logo.jpg" %}" alt="My image"> -->
 
-<a href="{% static 'ponto.xlsx' %}" class="btn btn-secondary px-4 py-2 btn-sm">Download CV</a>
+<a href="{% static 'excel/ponto.xlsx' %}" class="btn btn-secondary px-4 py-2 btn-sm">Download CV</a>
 
 {% endblock %}
 
@@ -39,7 +37,7 @@
 	document.getElementById('buttonID').onclick=function(){
 	h2.innerHTML = "Hide Images"
 
-    //Do whatever processing you need  <button type="submit" class="btn-primary" onclick="funcao()">GERAR EXCEL</button>
+    //Do whatever processing you need  <button type="submit" class="btn-primary" onclick="funcao()"></button>
     //document.getElementById('formID').submit();
 };
 </script>

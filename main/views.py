@@ -19,6 +19,7 @@ import datetime
 import pendulum
 pendulum.set_locale('pt-br')
 from django.conf.urls.static import static
+from django.templatetags.static import static
 from annoying.functions import get_object_or_None
 
 # Para garantir acesso a imagens em produção/heroku
@@ -100,7 +101,8 @@ def come(request):
 	mes = int(res[0])
 	ano = int(res[1])
 	ext = dsc(1, mes, ano)
-	po = "excel/Ponto_docente.xlsx"
+	#po = "excel/Ponto_docente.xlsx"
+	po = finders.find('excel/Ponto_docente.xlsx')
 	wb = load_workbook(filename=po)
 	ponto = "modelo"
 	ps = wb[ponto]
@@ -204,18 +206,21 @@ def come(request):
 
 	wb.remove(wb.get_sheet_by_name(ponto))
 	wb.remove(wb.get_sheet_by_name(final))
-
-	wb.save("excel/ponto.xlsx")
+	wb.save(finders.find('excel/ponto.xlsx'))
+	#wb.save("excel/ponto.xlsx")
 
 	return HttpResponse("Deu certo!!!")
 
 def get_name(request):
 	if request.method == "POST":
 		a = request.POST['resultado']
-		po = "excel/Ponto_docente.xlsx"
+		po = finders.find('excel/Ponto_docente.xlsx')
+		#wb = Workbook(po)
 		wb = load_workbook(filename=po)
-		nome = a + ".xlsx"
-		wb.save("excel/" + nome)
+		nome = 'excel/' + a + ".xlsx"
+		wb.save(static(nome))
+		#wb.save('excel/' + nome)
+		#wb.save("excel/" + nome)
 		return HttpResponse(a)
 	else:
 		lista = []
